@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 700px;
+    display: flex;
+    padding: 30px ;
+    gap: 30px;
+    align-items: center;
+    position: relative;
+
+}
+
+.container .info {
+    width: 50%;
+    height: 100%;
+    color: black;
+    background:rgb(233, 233, 170);
+    
+}
+
+.container .img {
+    width: 50%;
+    height: 100%;
+
+
+}
+
+.container .img img{
+    width: 650px;
+    height: 100%;
+}

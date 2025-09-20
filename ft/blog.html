@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Signup Card</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1: #f3ecff;
+      --bg2: #f6f0ff;
+      --accent: #6b4cff; /* purple */
+      --accent-2: #7f5cff;
+      --muted: #8a8a9b;
+      --card-width: 380px;
+      --radius: 12px;
+      --input-height: 44px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* background with subtle dot pattern and soft gradient */
+    body{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(180deg,var(--bg1),var(--bg2));
+      padding:48px 20px;
+    }
+
+    /* subtle repeating-dot pattern (CSS only) */
+    .bg-pattern{
+      position:fixed;
+      inset:0;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity:0.12;
+      pointer-events:none;
+    }
+
+    /* container to center card */
+    .wrap{
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:1000px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:70vh;
+    }
+
+    /* card */
+    .card{
+      width:var(--card-width);
+      background: #fff;
+      border-radius:18px;
+      padding:28px 28px 22px;
+      box-shadow: 0 10px 30px rgba(102,84,255,0.07), inset 0 1px 0 rgba(255,255,255,0.6);
+      text-align:center;
+      position:relative;
+    }
+
+    /* top circular icon */
+    .avatar{
+      width:74px;
+      height:74px;
+      border-radius:50%;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin:-62px auto 12px;
+      box-shadow: 0 8px 20px rgba(99,69,255,0.12);
+    }
+    .avatar svg{ width:34px; height:34px; fill:#fff; opacity:0.98; }
+
+    h1{
+      font-size:20px;
+      margin:6px 0 6px;
+      font-weight:700;
+      color:#222;
+    }
+    p.lead{
+      margin:0 0 18px;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.35;
+      padding:0 6px;
+    }
+
+    form{ text-align:left; margin-top:6px; }
+
+    label{
+      font-size:12px;
+      display:block;
+      margin-bottom:6px;
+      color:#3b3b4a;
+      font-weight:600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"]{
+      width:100%;
+      height:var(--input-height);
+      border-radius:8px;
+      border:1.5px solid rgba(34,34,34,0.08);
+      padding:0 14px;
+      outline:none;
+      font-size:14px;
+      transition: box-shadow .15s, border-color .15s, transform .02s;
+      background:linear-gradient(180deg,#fff,#fbfbfe);
+      color:#222;
+      margin-bottom:14px;
+      box-shadow: 0 2px 6px rgba(16,24,40,0.03);
+    }
+    input:focus{
+      border-color: rgba(107,76,255,0.95);
+      box-shadow: 0 6px 18px rgba(107,76,255,0.12);
+    }
+
+    .btn{
+      display:block;
+      width:100%;
+      height:48px;
+      border-radius:10px;
+      border:0;
+      cursor:pointer;
+      font-weight:600;
+      font-size:15px;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:white;
+      box-shadow: 0 8px 20px rgba(107,76,255,0.18);
+      transition: transform .12s ease, box-shadow .12s;
+      margin-top:4px;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .small{
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+      margin-top:10px;
+    }
+    .small a{ color:var(--accent); text-decoration:none; font-weight:600; }
+
+    /* footer presented by pill */
+    .presented{
+      margin-top:28px;
+      display:flex;
+      justify-content:center;
+    }
+    .pill{
+      background:#fff;
+      padding:8px 18px;
+      border-radius:999px;
+      box-shadow: 0 12px 30px rgba(52,40,100,0.06);
+      font-size:13px;
+      color:#333;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    /* responsive */
+    @media (max-width:420px){
+      .card{ width:92%; padding:20px; border-radius:14px; }
+      .avatar{ width:60px; height:60px; margin-top:-46px; }
+      h1{ font-size:18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-pattern" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="card" role="region" aria-label="Create an account">
+      <div class="avatar" aria-hidden="true">
+        <!-- simple user icon -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 12a4 4 0 100-8 4 4 0 000 8zm0 2c-4.418 0-8 2.015-8 4.5V21h16v-2.5c0-2.485-3.582-4.5-8-4.5z"/>
+        </svg>
+      </div>
+
+      <h1>Create an account</h1>
+      <p class="lead">Sign up to access exclusive features, personalized content, and start your journey with us!</p>
+
+      <form onsubmit="event.preventDefault(); alert('Sign up clicked');" novalidate>
+        <label for="name">Name*</label>
+        <input id="name" type="text" placeholder="Your name" required>
+
+        <label for="email">Email*</label>
+        <input id="email" type="email" placeholder="you@example.com" required>
+
+        <label for="password">Password*</label>
+        <input id="password" type="password" placeholder="Create a password" required>
+
+        <button class="btn" type="submit">Sign Up</button>
+
+        <p class="small">Already a member? <a href="#">Sign In</a></p>
+      </form>
+    </div>
+  </div>
+
+  <div style="position:fixed;left:0;right:0;bottom:22px;display:flex;justify-content:center;z-index:1;">
+    <div class="pill">
+      <span>presented by</span>
+      <!-- simple logo-like dots -->
+      <svg width="28" height="16" viewBox="0 0 28 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="6" cy="8" r="4" fill="#6b4cff"/>
+        <circle cx="14" cy="8" r="4" fill="#9aa1ff"/>
+        <circle cx="22" cy="8" r="4" fill="#7f5cff"/>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>
